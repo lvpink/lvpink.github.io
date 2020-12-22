@@ -154,13 +154,10 @@
             //非规则选择，重置
             a=[0,0];
         }
-		console.log(a[0]);
-		console.log(a[1]);
-		console.log(idNum);
+	    
         //x正方向->落点
         if(a[1]==idNum+20){
-			var mid = a[0]/10+1
-			console.log(mid+"==zheng====")
+			var mid = a[0]/10+1;
 			if(clickMid(mid)){
 				a=[0,0];
 				return;
@@ -169,8 +166,7 @@
         }
         //x负方向->落点
         if(a[0]==a[1]+20){
-			var mid = a[1]/10+1
-			console.log(mid+"====fu==")
+			var mid = a[1]/10+1;
 			if(clickMid(mid)){
 				a=[0,0];
 				return;
@@ -179,8 +175,7 @@
         }
         //y负方向->落点
         if(idNum==a[1]+2){
-			var mid = (a[1]+1)/10
-			console.log(mid+"===Y=fu==")
+			var mid = (a[1]+1)/10;
 			if(clickMid(mid)){
 				a=[0,0];
 				return;
@@ -189,8 +184,7 @@
         }
         //y正方向->落点
         if(a[1]==idNum+2){
-			var mid = (a[0]+1)/10
-			console.log(mid+"====Yfu==")
+			var mid = (a[0]+1)/10;
 			if(clickMid(mid)){
 				a=[0,0];
 				return;
@@ -204,9 +198,6 @@
         makeColorAndContext(a0,a0,"#FD3755");
         makeColorAndContext(a1,"","#9DC789");
         makeColorAndContext(p,"","#9DC789");
-		//如果起始位置不是红色，重置
-		 // document.getElementById(a1).attr("disabled","disabled");
-		 // document.getElementById(p).attr("disabled","disabled");
         a=[0,0];
     }
     //渲染
