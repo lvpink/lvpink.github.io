@@ -1,3 +1,44 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@lvpink 
+Learn Git and GitHub without any code!
+Using the Hello World guide, you’ll start a branch, write comments, and open a pull request.
+
+
+lvpink
+/
+lvpink.github.io
+forked from qiubaiying/qiubaiying.github.io
+0
+🔖 Custom notification settings
+Looking for a little more control? Now you can choose which types of activity you’d like to be notified about per repository.
+
+06.9k
+Code
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+Try out GitHub Discussions! Beta
+Discussions allows community members to start conversations and ask questions without opening issues. Get started by toggling Discussions under Features.
+
+lvpink.github.io/lonelyQ.html
+@lvpink
+lvpink 增加孤独棋
+Latest commit 8d9bfa4 on 21 Dec 2019
+ History
+ 1 contributor
+178 lines (177 sloc)  7.87 KB
+  
 <!DOCTYPE html>
 <html>
 <head>
@@ -116,6 +157,8 @@
     }
     //初始化
     var a = [0,0];
+	//初始化方向
+	var b = [false,false];
     //开始选择标志
     var iniflag = true;
     //点击方法体
@@ -128,6 +171,14 @@
             alert("开始挑战!");
             return;
         }
+	
+		var rgb = this.style.color;
+	    if(a[1]==0&&rgb.substring(4,7).toString()=="157"){
+			a = [0,0];
+			return;
+		}
+		
+		
         //落点位置a[0]
         var idNum = parseFloat(this.id.substring(0,this.id.length-1))*10;
         if(a[0]==0&&a[1]==0){
@@ -143,28 +194,59 @@
             //非规则选择，重置
             a=[0,0];
         }
+		console.log(a[0]);
+		console.log(a[1]);
+		console.log(idNum);
         //x正方向->落点
         if(a[1]==idNum+20){
+			var mid = a[0]/10+1
+			console.log(mid+"==zheng====")
+			if(clickMid(mid)){
+				a=[0,0];
+				return;
+			}
             putParamToMakeColorAndContext(a[0]/10,a[1]/10,(a[1]-10)/10);
         }
         //x负方向->落点
         if(a[0]==a[1]+20){
+			var mid = a[1]/10+1
+			console.log(mid+"====fu==")
+			if(clickMid(mid)){
+				a=[0,0];
+				return;
+			}
             putParamToMakeColorAndContext(a[0]/10,a[1]/10,(a[1]+10)/10);
         }
         //y负方向->落点
         if(idNum==a[1]+2){
+			var mid = (a[1]+1)/10
+			console.log(mid+"===Y=fu==")
+			if(clickMid(mid)){
+				a=[0,0];
+				return;
+			}
             putParamToMakeColorAndContext(a[0]/10,a[1]/10,(a[1]+1)/10);
         }
         //y正方向->落点
         if(a[1]==idNum+2){
+			var mid = (a[0]+1)/10
+			console.log(mid+"====Yfu==")
+			if(clickMid(mid)){
+				a=[0,0];
+				return;
+			}
             putParamToMakeColorAndContext(a[0]/10,a[1]/10,(a[1]-1)/10);
         }
     }
+	
     //传参
     var putParamToMakeColorAndContext = function(a0,a1,p){
         makeColorAndContext(a0,a0,"#FD3755");
         makeColorAndContext(a1,"","#9DC789");
         makeColorAndContext(p,"","#9DC789");
+		//如果起始位置不是红色，重置
+		 // document.getElementById(a1).attr("disabled","disabled");
+		 // document.getElementById(p).attr("disabled","disabled");
         a=[0,0];
     }
     //渲染
@@ -173,6 +255,14 @@
         document.getElementById(a+"d").style.color = cols;
         document.getElementById(a+"d").style.backgroundColor = cols;
     }
+	//合法校验
+	function clickMid(id){
+		var rgb = document.getElementById(id+"d").style.color;
+		if(rgb.substring(4,7).toString()=="157"){
+			return true;
+		}
+		
+	}
 </script>
 </body>
 </html>
